@@ -1,14 +1,14 @@
 /* Paleta de Cores de Alta Tecnologia (Cyberpunk/Sci-Fi) */
 :root {
-    --bg-main: #060814;          /* Azul Espacial Profundo */
-    --bg-card: #0c102b;          /* Contêiner Tecnológico */
-    --text-primary: #f0f4f9;     /* Branco Puro */
-    --text-secondary: #8a9fc4;   /* Azul Acinzentado Muted */
-    --neon-blue: #00f2fe;        /* Ciano Neon */
-    --neon-purple: #9d4edd;      /* Roxo Neon */
-    --neon-green: #39ff14;       /* Verde Matrix */
-    --neon-red: #ff0055;         /* Alerta Vermelho */
-    --border-cyber: #1e265c;     /* Bordas de Circuitos */
+    --bg-main: #060814;          
+    --bg-card: #0c102b;          
+    --text-primary: #f0f4f9;     
+    --text-secondary: #8a9fc4;   
+    --neon-blue: #00f2fe;        
+    --neon-purple: #9d4edd;      
+    --neon-green: #39ff14;       
+    --neon-red: #ff0055;         
+    --border-cyber: #1e265c;     
 }
 
 * {
@@ -27,13 +27,11 @@ body {
     overflow-x: hidden;
 }
 
-/* Header & Sistema de Abas */
 header {
     background: linear-gradient(180deg, #0c102b 0%, var(--bg-main) 100%);
     border-bottom: 2px solid var(--border-cyber);
     padding: 40px 20px 0 20px;
     text-align: center;
-    position: relative;
 }
 
 .logo-cyber {
@@ -41,7 +39,6 @@ header {
     font-size: 1.4rem;
     font-weight: 900;
     letter-spacing: 2px;
-    color: var(--text-primary);
     margin-bottom: 15px;
 }
 
@@ -54,7 +51,6 @@ header h1 {
     font-family: 'Orbitron', sans-serif;
     font-size: 2.2rem;
     font-weight: 900;
-    letter-spacing: -1px;
     background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -68,7 +64,7 @@ header h1 {
     margin: 0 auto 30px auto;
 }
 
-/* Design de Abas Moderno */
+/* Abas */
 .tabs-container {
     display: flex;
     justify-content: center;
@@ -86,7 +82,6 @@ header h1 {
     font-family: 'Orbitron', sans-serif;
     font-size: 0.85rem;
     font-weight: 700;
-    letter-spacing: 1px;
     cursor: pointer;
     border-radius: 6px 6px 0 0;
     transition: all 0.3s ease;
@@ -102,10 +97,8 @@ header h1 {
     color: var(--neon-blue);
     border-color: var(--neon-blue);
     box-shadow: 0 -4px 10px rgba(0, 242, 254, 0.15);
-    position: relative;
 }
 
-/* Controle de visibilidade das Abas */
 .tab-content {
     display: none;
 }
@@ -115,7 +108,6 @@ header h1 {
     animation: fadeIn 0.4s ease-in-out;
 }
 
-/* Container do Conteúdo */
 .container {
     max-width: 1100px;
     width: 100%;
@@ -124,7 +116,6 @@ header h1 {
     flex: 1;
 }
 
-/* Grid Sections */
 .grid-section {
     display: flex;
     align-items: center;
@@ -133,7 +124,6 @@ header h1 {
     border: 1px solid var(--border-cyber);
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
 
 .grid-section.reverse {
@@ -153,7 +143,6 @@ header h1 {
     font-size: 0.75rem;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
     margin-bottom: 15px;
     border-radius: 4px;
 }
@@ -174,13 +163,11 @@ h2 {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.8rem;
     margin-bottom: 20px;
-    color: var(--text-primary);
 }
 
 p {
     color: var(--text-secondary);
     line-height: 1.6;
-    font-size: 1rem;
 }
 
 .img-cyber {
@@ -189,22 +176,19 @@ p {
     object-fit: cover;
     border-radius: 6px;
     border: 1px solid var(--border-cyber);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Citações Científicas */
 .scientific-quote {
     border-left: 3px solid var(--neon-purple);
     background: rgba(157, 78, 221, 0.03);
     padding: 20px;
-    margin: 25px 0 0 0;
+    margin-top: 25px;
     border-radius: 0 6px 6px 0;
 }
 
 .scientific-quote p {
     color: var(--text-primary);
     font-style: italic;
-    font-size: 0.95rem;
 }
 
 .scientific-quote cite {
@@ -212,10 +196,9 @@ p {
     color: var(--text-secondary);
     display: block;
     margin-top: 10px;
-    font-weight: bold;
 }
 
-/* Quiz Customizado */
+/* Quiz */
 .quiz-container {
     background-color: var(--bg-card);
     border: 1px solid var(--border-cyber);
@@ -225,10 +208,8 @@ p {
 
 .quiz-question {
     font-family: 'Orbitron', sans-serif;
-    font-size: 1rem;
     color: var(--neon-blue);
-    margin-top: 25px;
-    margin-bottom: 20px;
+    margin: 25px 0 20px 0;
 }
 
 .options-group {
@@ -247,17 +228,10 @@ p {
     padding: 16px;
     border-radius: 6px;
     cursor: pointer;
-    transition: all 0.2s ease;
 }
 
 .option-card:hover {
     border-color: var(--neon-blue);
-    background-color: rgba(0, 242, 254, 0.02);
-}
-
-.option-card input {
-    margin-top: 4px;
-    accent-color: var(--neon-blue);
 }
 
 .btn-submit {
@@ -268,24 +242,17 @@ p {
     width: 100%;
     border-radius: 6px;
     font-family: 'Orbitron', sans-serif;
-    font-size: 0.9rem;
     font-weight: 900;
-    letter-spacing: 1px;
     cursor: pointer;
-    transition: opacity 0.2s;
-}
-
-.btn-submit:hover {
-    opacity: 0.9;
 }
 
 #quiz-result {
     margin-top: 20px;
     padding: 15px;
     border-radius: 6px;
-    font-weight: 600;
     text-align: center;
     border: 1px solid transparent;
+    font-weight: 600;
 }
 
 #quiz-result.success {
@@ -300,10 +267,8 @@ p {
     border-color: var(--neon-red);
 }
 
-/* Listas Futuristas */
-.cyber-list {
-    list-style: none;
-    margin-top: 15px;
+.hidden {
+    display: none !important;
 }
 
 .cyber-list li {
@@ -311,7 +276,7 @@ p {
     margin-bottom: 15px;
     padding-left: 25px;
     position: relative;
-    line-height: 1.5;
+    list-style: none;
 }
 
 .cyber-list li::before {
@@ -319,10 +284,8 @@ p {
     position: absolute;
     left: 0;
     color: var(--neon-purple);
-    font-weight: bold;
 }
 
-/* Rodapé */
 footer {
     background-color: #04060f;
     border-top: 1px solid var(--border-cyber);
@@ -333,32 +296,18 @@ footer {
 footer p {
     font-family: 'Orbitron', sans-serif;
     font-size: 0.75rem;
-    color: var(--text-secondary);
-    letter-spacing: 1px;
 }
 
-/* Animações */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsividade Completa */
 @media (max-width: 768px) {
     .grid-section, .grid-section.reverse {
         flex-direction: column;
-        padding: 25px;
-    }
-    header h1 {
-        font-size: 1.6rem;
     }
     .tabs-container {
         flex-direction: column;
-        gap: 5px;
-    }
-    .tab-btn {
-        border-bottom: 1px solid var(--border-cyber);
-        border-radius: 4px;
-        padding: 10px;
     }
 }
