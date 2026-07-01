@@ -3,62 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cidadania Digital e IA: O Impacto das Deepfakes</title>
+    <title>Cidadania Digital e IA — O Impacto das Deepfakes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <header>
-        <div class="header-container">
-            <h1>Cidadania Digital & IA</h1>
-            <p>O Impacto das Deepfakes e da Desinformação na Sociedade</p>
-            <button id="btn-theme">Alternar Modo Escuro</button>
+        <div class="nav-container">
+            <div class="logo">Consciência<span>Digital</span></div>
+            <button id="btn-theme" class="theme-toggle">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.22" x2="5.64" y2="17.78"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <span>Modo Escuro</span>
+            </button>
         </div>
     </header>
 
-    <main>
-        <section class="card">
-            <h2>O que são Deepfakes?</h2>
-            <p>Deepfakes são vídeos, áudios ou imagens modificados de forma ultra-realista por meio de algoritmos de Inteligência Artificial. Embora tragam inovações para o cinema e entretenimento, seu uso indevido facilita a criação de conteúdos falsos que podem arruinar reputações e distorcer a realidade.</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Cidadania Digital & Inteligência Artificial</h1>
+            <p>Entenda o impacto das deepfakes e da desinformação automatizada na nossa sociedade e aprenda a navegar com segurança.</p>
+            <a href="#quiz-section" class="btn-primary">Testar Meus Conhecimentos</a>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="grid-section">
+            <div class="text-block">
+                <span class="badge">Tecnologia</span>
+                <h2>O que são as Deepfakes?</h2>
+                <p>Deepfakes são vídeos, áudios ou imagens gerados por Inteligência Artificial de forma hiper-realista. Embora tragam grandes avanços para a indústria do entretenimento, quando usados de forma maliciosa, podem manipular a opinião pública, criar notícias falsas e prejudicar reputações.</p>
+            </div>
+            <div class="image-block">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Abstrato sobre inteligência artificial e dados digitais" class="img-responsive">
+            </div>
         </section>
 
-        <section class="card quiz-box">
-            <h2>Desafio da Verdade: Teste seus Olhos</h2>
-            <p>As fake news automatizadas parecem reais. Você sabe como se proteger? Responda à questão abaixo:</p>
+        <section id="quiz-section" class="quiz-container">
+            <div class="quiz-header">
+                <h2>Desafio da Verdade</h2>
+                <p>Você consegue identificar a desinformação? Responda ao teste abaixo:</p>
+            </div>
             
             <form id="quiz-form">
-                <p class="question"><strong>Qual é a melhor estratégia ao receber um vídeo bombástico e polêmico de um famoso ou político?</strong></p>
+                <p class="quiz-question">Qual é o método mais seguro ao receber um vídeo polêmico ou impactante nas redes sociais?</p>
                 
-                <label class="option">
-                    <input type="radio" name="answer" value="incorrect1"> Compartilhar imediatamente nos grupos de mensagens para alertar a todos.
-                </label>
+                <div class="options-group">
+                    <label class="option-card">
+                        <input type="radio" name="answer" value="incorrect1">
+                        <span class="custom-radio"></span>
+                        <span class="option-text">Compartilhar imediatamente para alertar seus amigos e familiares o mais rápido possível.</span>
+                    </label>
+                    
+                    <label class="option-card">
+                        <input type="radio" name="answer" value="correct">
+                        <span class="custom-radio"></span>
+                        <span class="option-text">Desconfiar, analisar detalhes visuais (como o piscar dos olhos e falhas na voz) e buscar em portais de notícias confiáveis.</span>
+                    </label>
+                    
+                    <label class="option-card">
+                        <input type="radio" name="answer" value="incorrect2">
+                        <span class="custom-radio"></span>
+                        <span class="option-text">Acreditar totalmente, pois se a imagem e o som parecem reais, não há motivos para desconfiar.</span>
+                    </label>
+                </div>
                 
-                <label class="option">
-                    <input type="radio" name="answer" value="correct"> Analisar detalhes como falhas no piscar de olhos, sincronia de áudio e buscar a notícia em portais confiáveis.
-                </label>
-                
-                <label class="option">
-                    <input type="radio" name="answer" value="incorrect2"> Acreditar direto, afinal, se a imagem e a voz parecem reais, o vídeo com certeza é verdadeiro.
-                </label>
-                
-                <button type="submit" id="btn-submit">Verificar Resposta</button>
+                <button type="submit" class="btn-submit">Verificar Resposta</button>
             </form>
             
-            <div id="quiz-result"></div>
+            <div id="quiz-result" class="hidden"></div>
         </section>
 
-        <section class="card">
-            <h2>Guia Prático de Segurança na Internet</h2>
-            <ul class="guidelines">
-                <li><strong>Desconfie do imediatismo:</strong> Notícias feitas para chocar ou causar raiva geralmente são desinformação automatizada.</li>
-                <li><strong>Olhe de perto:</strong> Bordas borradas ao redor do rosto, iluminação que não bate com o fundo e falhas na voz são indícios de manipulação por IA.</li>
-                <li><strong>Consulte checadores de fatos:</strong> Sites especializados em checagem ajudam a desmascarar boatos rapidamente.</li>
-            </ul>
+        <section class="grid-section reverse">
+            <div class="image-block">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="Segurança digital e proteção" class="img-responsive">
+            </div>
+            <div class="text-block">
+                <span class="badge alert">Prevenção</span>
+                <h2>Guia de Boas Práticas Digitais</h2>
+                <p>Desenvolver o pensamento crítico é o seu principal escudo no ambiente digital. Siga estas regras:</p>
+                <ul class="features-list">
+                    <li><strong>Avalie a fonte:</strong> Verifique se a informação está em grandes veículos de comunicação.</li>
+                    <li><strong>Atenção aos ruídos digitais:</strong> Rostos que não piscam, sincronia de lábios desalinhada e sombras estranhas indicam alteração por IA.</li>
+                    <li><strong>Não espalhe o boato:</strong> Na dúvida, não compartilhe. Quebre o ciclo da desinformação.</li>
+                </ul>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 - Projeto de Educação Digital e IA. Todos os direitos reservados.</p>
+        <div class="footer-content">
+            <p>&copy; 2026 Consciência Digital. Criado para o componente curricular de Educação Digital e IA.</p>
+            <p class="footer-sub">Projeto protegido sob boas práticas éticas de desenvolvimento.</p>
+        </div>
     </footer>
 
     <script src="js/script.js"></script>
