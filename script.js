@@ -1,20 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 1. Alternador de Tema (Modo Escuro / Claro)
-    const btnTheme = document.getElementById("btn-theme");
-    const themeText = btnTheme.querySelector("span");
-    
-    btnTheme.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        
-        if (document.body.classList.contains("dark-mode")) {
-            themeText.textContent = "Modo Claro";
-        } else {
-            themeText.textContent = "Modo Escuro";
-        }
+    // 1. Sistema Lógico de Abas (Navegação Avançada)
+    const tabs = document.querySelectorAll(".tab-btn");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            // Remove a classe ativa de todos os botões e conteúdos
+            tabs.forEach(t => t.classList.remove("active"));
+            contents.forEach(c => c.classList.remove("active"));
+
+            // Ativa a aba clicada e exibe seu respectivo contêiner
+            tab.classList.add("active");
+            const targetContent = document.getElementById(tab.dataset.tab);
+            targetContent.classList.add("active");
+        });
     });
 
-    // 2. Processador do Formulário Acadêmico (Quiz)
+    // 2. Validador Técnico do Quiz
     const quizForm = document.getElementById("quiz-form");
     const quizResult = document.getElementById("quiz-result");
 
@@ -23,24 +26,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const selectedOption = document.querySelector('input[name="answer"]:checked');
         
-        // Reseta os estados visuais da caixa de resposta
-        quizResult.className = ""; 
+        quizResult.className = ""; // Limpa os estados de erro/sucesso
         
         if (!selectedOption) {
-            quizResult.textContent = "⚠️ Seleção pendente. Escolha uma alternativa metodológica para prosseguir.";
+            quizResult.textContent = "⚠️ PARÂMETRO AUSENTE: Selecione uma alternativa para análise.";
             quizResult.classList.add("error");
-            quizResult.classList.remove("hidden");
             return;
         }
 
         if (selectedOption.value === "correct") {
-            quizResult.textContent = "🎉 Resposta Correta. De acordo com as diretrizes de checagem, a suspensão do compartilhamento associada ao cruzamento de dados secundários barra a proliferação viral da desinformação.";
+            quizResult.textContent = "✓ SUCESSO DO SISTEMA: Interromper o compartilhamento e cruzar referências com repositórios confiáveis mitiga a proliferação da desinformação.";
             quizResult.classList.add("success");
         } else {
-            quizResult.textContent = "❌ Resposta Incorreta. O ecossistema de mídias sintéticas imita perfeitamente estruturas formais de autoridade. A checagem primária é indispensável.";
+            quizResult.textContent = "✕ ANOMALIA DETECTADA: As mídias sintéticas replicam padrões formais de credibilidade com exatidão. A checagem primária é mandatória.";
             quizResult.classList.add("error");
         }
-        
-        quizResult.classList.remove("hidden");
     });
 });
