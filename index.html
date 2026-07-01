@@ -4,107 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cidadania Digital: IA & Deepfakes</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
 
-    <header>
-        <div class="header-content">
-            <div class="logo-cyber">NEXUS<span>CORE</span></div>
-            <h1>CIDADANIA DIGITAL & IA</h1>
-            <p class="subtitle">O impacto das deepfakes e da desinformação na sociedade conectada</p>
-            
-            <nav class="tabs-container">
-                <button class="tab-btn active" data-tab="tecnologia">01. TECNOLOGIA</button>
-                <button class="tab-btn" data-tab="artigos">02. ESTUDOS CIENTÍFICOS</button>
-                <button class="tab-btn" data-tab="curiosidades">03. CURIOSIDADES</button>
-            </nav>
-        </div>
-    </header>
+    <style>
+        /* Paleta de Cores de Alta Tecnologia (Cyberpunk/Sci-Fi) */
+        :root {
+            --bg-main: #060814;          
+            --bg-card: #0c102b;          
+            --text-primary: #f0f4f9;     
+            --text-secondary: #8a9fc4;   
+            --neon-blue: #00f2fe;        
+            --neon-purple: #9d4edd;      
+            --neon-green: #39ff14;       
+            --neon-red: #ff0055;         
+            --border-cyber: #1e265c;     
+        }
 
-    <main class="container">
-        
-        <div id="tecnologia" class="tab-content active">
-            <section class="grid-section">
-                <div class="text-block">
-                    <span class="cyber-badge">Mídias Sintéticas</span>
-                    <h2>A Engenharia das Deepfakes</h2>
-                    <p>As deepfakes representam o ápice da manipulação digital. Utilizando redes neurais artificiais avançadas, esses sistemas conseguem recriar rostos, sintetizar vozes e simular comportamentos humanos com precisão cirúrgica, tornando a linha entre o real e o simulado quase invisível para o usuário comum.</p>
-                </div>
-                <div class="image-block">
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Interface Digital de Inteligência Artificial" class="img-cyber">
-                </div>
-            </section>
-        </div>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        <div id="artigos" class="tab-content">
-            <section class="quiz-container">
-                <div class="quiz-header">
-                    <span class="cyber-badge alert">Análise Acadêmica</span>
-                    <h2>Evidências de um Cenário em Mutação</h2>
-                    <p>Pesquisas recentes alertam para o perigo da automação na distribuição de conteúdos manipulados.</p>
-                    
-                    <blockquote class="scientific-quote">
-                        <p>"As Redes Adversariais Generativas (GANs) operam criando um ciclo contínuo de falsificação e detecção. Esse mecanismo acelera de forma exponencial a evolução do realismo das mídias sintéticas."</p>
-                        <cite>— Journal of Digital Citizenship Studies, 2025</cite>
-                    </blockquote>
-                </div>
-                
-                <form id="quiz-form">
-                    <p class="quiz-question">// DIRETRIZ DE SEGURANÇA: Qual a melhor conduta ao identificar um conteúdo suspeito?</p>
-                    
-                    <div class="options-group">
-                        <label class="option-card">
-                            <input type="radio" name="answer" value="incorrect1">
-                            <span class="option-text">Disseminar o arquivo para análise imediata em redes de conexões próximas.</span>
-                        </label>
-                        
-                        <label class="option-card">
-                            <input type="radio" name="answer" value="correct">
-                            <span class="option-text">Interromper a cadeia de compartilhamento e realizar o cruzamento de dados com fontes e repositórios oficiais.</span>
-                        </label>
-                        
-                        <label class="option-card">
-                            <input type="radio" name="answer" value="incorrect2">
-                            <span class="option-text">Validar o conteúdo caso ele use elementos gráficos de grandes portais sem conter o link original da pesquisa.</span>
-                        </label>
-                    </div>
-                    
-                    <button type="submit" class="btn-submit">PROCESSAR RESPOSTA</button>
-                </form>
-                
-                <div id="quiz-result" class="hidden"></div>
-            </section>
-        </div>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
 
-        <div id="curiosidades" class="tab-content">
-            <section class="grid-section reverse">
-                <div class="text-block">
-                    <span class="cyber-badge trivia">Dados Adicionais</span>
-                    <h2>Fatos Curiosos sobre Mídias Sintéticas</h2>
-                    <ul class="cyber-list">
-                        <li><strong>Fusão de Termos:</strong> A expressão surgiu em 2017 a partir da junção entre <em>Deep Learning</em> (Aprendizado Profundo) e <em>Fake</em> (Falso).</li>
-                        <li><strong>O Desafio do Olhar:</strong> Inicialmente, os algoritmos criavam rostos que não piscavam, pois as bases de dados de treinamento continham majoritariamente fotografias de pessoas com os olhos abertos.</li>
-                        <li><strong>Clonagem de Voz:</strong> Atualmente, amostras curtas de apenas 3 segundos de áudio limpo são suficientes para sintetizar clones vocais precisos.</li>
-                    </ul>
-                </div>
-                <div class="image-block">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Rede global de dados holográfica" class="img-cyber">
-                </div>
-            </section>
-        </div>
+        header {
+            background: linear-gradient(180deg, #0c102b 0%, var(--bg-main) 100%);
+            border-bottom: 2px solid var(--border-cyber);
+            padding: 40px 20px 20px 20px;
+            text-align: center;
+        }
 
-    </main>
+        .logo-cyber {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
 
-    <footer>
-        <div class="footer-content">
-            <p>// PROJETO RECOVERY 2026 // COMPONENTE: EDUCAÇÃO DIGITAL E IA</p>
-        </div>
-    </footer>
+        .logo-cyber span {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
 
-    <script src="js/script.js"></script>
-</body>
-</html>
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* Abas de Navegação */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            max-width: 800px;
+            margin: 0
