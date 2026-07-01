@@ -1,38 +1,32 @@
-/* Paleta de Cores Harmônicas e Modernas */
+/* Paleta Cromática Acadêmica Profissional */
 :root {
     --bg-global: #f8fafc;
     --bg-surface: #ffffff;
-    --text-main: #0f172a;
-    --text-muted: #475569;
-    --brand-color: #4f46e5; /* Índigo Moderno */
-    --brand-hover: #4338ca;
-    --accent-success: #10b981;
-    --accent-error: #ef4444;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --brand-color: #0f172a; /* Azul Escuro Editorial */
+    --brand-accent: #2563eb; /* Azul Tecnológico */
+    --accent-success: #16a34a;
+    --accent-error: #dc2626;
     --border-color: #e2e8f0;
-    --hero-bg: linear-gradient(135deg, #4f46e5 0%, #1e1b4b 100%);
+    --hero-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
 }
 
-/* Transição suave para o Modo Escuro */
 body.dark-mode {
-    --bg-global: #0f172a;
+    --bg-global: #0b0f19;
     --bg-surface: #1e293b;
-    --text-main: #f8fafc;
+    --text-main: #f1f5f9;
     --text-muted: #94a3b8;
-    --brand-color: #818cf8;
-    --brand-hover: #6366f1;
+    --brand-color: #f1f5f9;
+    --brand-accent: #3b82f6;
     --border-color: #334155;
-    --hero-bg: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+    --hero-bg: linear-gradient(135deg, #020617 0%, #0f172a 100%);
 }
 
-/* Reset básico e tipografia */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 body {
@@ -40,7 +34,9 @@ body {
     background-color: var(--bg-global);
     color: var(--text-main);
     transition: background-color 0.3s, color 0.3s;
-    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Navbar */
@@ -50,7 +46,6 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
-    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .nav-container {
@@ -63,97 +58,78 @@ header {
 }
 
 .logo {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    letter-spacing: -0.5px;
 }
 
 .logo span {
-    color: var(--brand-color);
+    color: var(--brand-accent);
 }
 
 .theme-toggle {
-    display: flex;
-    align-items: center;
-    gap: 8px;
     background: transparent;
     border: 1px solid var(--border-color);
     padding: 8px 16px;
-    border-radius: 20px;
+    border-radius: 6px;
     color: var(--text-main);
     cursor: pointer;
     font-weight: 600;
     font-size: 0.85rem;
-    transition: 0.2s;
 }
 
-.theme-toggle:hover {
-    background-color: var(--border-color);
-}
-
-.sun-icon {
-    width: 16px;
-    height: 16px;
-}
-
-/* Seção Hero */
+/* Hero Section */
 .hero {
     background: var(--hero-bg);
     color: #ffffff;
-    padding: 80px 20px;
+    padding: 90px 20px;
     text-align: center;
 }
 
 .hero-content {
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
-.hero h1 {
-    font-size: 2.5rem;
+.academic-badge {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: #93c5fd;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: 2.6rem;
+    margin-top: 20px;
     margin-bottom: 15px;
+    font-weight: 700;
     letter-spacing: -1px;
+    line-height: 1.2;
 }
 
 .hero p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    margin-bottom: 30px;
+    font-size: 1.15rem;
+    opacity: 0.85;
 }
 
-.btn-primary {
-    display: inline-block;
-    background-color: #ffffff;
-    color: #4f46e5;
-    padding: 12px 24px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.2s;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-}
-
-/* Container do Conteúdo */
+/* Containers e Grid */
 .container {
     max-width: 1100px;
     margin: 60px auto;
     padding: 0 20px;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 70px;
+    flex: 1;
 }
 
-/* Grid das Seções de Texto + Imagem */
 .grid-section {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 50px;
 }
 
 .grid-section.reverse {
@@ -166,56 +142,83 @@ header {
 
 .badge {
     display: inline-block;
-    background-color: rgba(79, 70, 229, 0.1);
-    color: var(--brand-color);
+    background-color: var(--border-color);
+    color: var(--text-main);
     padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-bottom: 15px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 12px;
 }
 
 .badge.alert {
-    background-color: rgba(16, 185, 129, 0.1);
-    color: var(--accent-success);
+    background-color: rgba(220, 38, 38, 0.1);
+    color: var(--accent-error);
+}
+
+.badge.trivia {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--brand-accent);
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 1.85rem;
     margin-bottom: 15px;
-    letter-spacing: -0.5px;
+    font-weight: 700;
 }
 
 .text-block p {
     color: var(--text-muted);
-    font-size: 1.05rem;
+    margin-bottom: 20px;
 }
 
 .img-responsive {
     width: 100%;
-    max-height: 350px;
+    max-height: 380px;
     object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* Área do Quiz Estilizada */
+/* Citações Científicas */
+.scientific-quote {
+    border-left: 4px solid var(--brand-accent);
+    padding: 15px 20px;
+    background-color: var(--bg-surface);
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+}
+
+.scientific-quote p {
+    font-style: italic;
+    color: var(--text-main) !important;
+    margin-bottom: 8px !important;
+    font-size: 0.95rem;
+}
+
+.scientific-quote cite {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    display: block;
+}
+
+/* Quiz Box */
 .quiz-container {
     background-color: var(--bg-surface);
     border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    border-radius: 12px;
+    padding: 35px;
 }
 
-.quiz-header {
-    text-align: center;
-    margin-bottom: 30px;
+.quiz-header h2 {
+    margin-top: 10px;
 }
 
 .quiz-question {
-    font-size: 1.15rem;
     font-weight: 600;
+    font-size: 1.05rem;
     margin-bottom: 20px;
 }
 
@@ -232,5 +235,94 @@ h2 {
     gap: 12px;
     background-color: var(--bg-global);
     border: 1px solid var(--border-color);
-    padding: 16px;
-    border-
+    padding: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.option-card input {
+    margin-top: 4px;
+}
+
+.btn-submit {
+    background-color: var(--brand-accent);
+    color: white;
+    border: none;
+    padding: 14px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#quiz-result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-align: center;
+}
+
+#quiz-result.success {
+    background-color: rgba(22, 163, 74, 0.15);
+    color: var(--accent-success);
+}
+
+#quiz-result.error {
+    background-color: rgba(220, 38, 38, 0.15);
+    color: var(--accent-error);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Lista de Curiosidades */
+.features-list {
+    list-style: none;
+}
+
+.features-list li {
+    margin-bottom: 14px;
+    color: var(--text-muted);
+    padding-left: 20px;
+    position: relative;
+}
+
+.features-list li::before {
+    content: "■";
+    position: absolute;
+    left: 0;
+    color: var(--brand-accent);
+    font-size: 0.8rem;
+    top: 2px;
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    padding: 25px;
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .grid-section, .grid-section.reverse {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .hero h1 {
+        font-size: 1.9rem;
+    }
+    .container {
+        gap: 50px;
+        margin: 30px auto;
+    }
+}
