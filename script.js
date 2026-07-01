@@ -1,15 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 1. Controle das Abas (Navegação Segura)
+    // 1. Controle das Abas (Navegação Segura e Acessível)
     const tabs = document.querySelectorAll(".tab-btn");
     const contents = document.querySelectorAll(".tab-content");
 
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
-            tabs.forEach(t => t.classList.remove("active"));
+            // Remove a classe ativa e redefine os atributos de acessibilidade
+            tabs.forEach(t => {
+                t.classList.remove("active");
+                t.setAttribute("aria-selected", "false");
+            });
+            
             contents.forEach(c => c.classList.remove("active"));
 
+            // Ativa a aba clicada
             tab.classList.add("active");
+            tab.setAttribute("aria-selected", "true");
+            
             const targetContent = document.getElementById(tab.dataset.tab);
             
             // Tratamento contra erro de ID inexistente
