@@ -3,108 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cidadania Digital e IA — Análise das Deepfakes</title>
+    <title>Cidadania Digital: IA & Deepfakes</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <header>
-        <div class="nav-container">
-            <div class="logo">Educação<span>Digital</span></div>
-            <button id="btn-theme" class="theme-toggle">
-                <span>Modo Escuro</span>
-            </button>
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="logo-cyber">NEXUS<span>CORE</span></div>
+            <h1>CIDADANIA DIGITAL & IA</h1>
+            <p class="subtitle">O impacto das deepfakes e da desinformação na sociedade conectada</p>
+            
+            <nav class="tabs-container">
+                <button class="tab-btn active" data-tab="tecnologia">01. TECNOLOGIA</button>
+                <button class="tab-btn" data-tab="artigos">02. ESTUDOS CIENTÍFICOS</button>
+                <button class="tab-btn" data-tab="curiosidades">03. ARQUIVO DE CURIOSIDADES</button>
+            </nav>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <span class="academic-badge">Artigos & Conscientização</span>
-            <h1>O Impacto das Deepfakes e da Desinformação na Sociedade</h1>
-            <p>Uma abordagem técnica, ética e científica sobre a manipulação de mídias por Inteligência Artificial na era da pós-verdade.</p>
-        </div>
-    </section>
-
     <main class="container">
         
-        <section class="grid-section">
-            <div class="text-block">
-                <span class="badge">Conceito Técnico</span>
-                <h2>Como funcionam as Deepfakes?</h2>
-                <p>A tecnologia por trás das deepfakes baseia-se em redes neurais artificiais avançadas que mapeiam expressões faciais e de voz para sobrepô-las em arquivos originais com precisão milimétrica.</p>
-                
-                <blockquote class="scientific-quote">
-                    <p>"As Redes Adversariais Generativas (GANs) operam através de um sistema de disputa: enquanto um algoritmo gera imagens falsas, o outro tenta detectá-las, forçando o sistema a atingir um nível de realismo quase indistinguível para o olho humano."</p>
-                    <cite>— Revista Brasileira de Computação Aplicada, 2024</cite>
-                </blockquote>
-            </div>
-            <div class="image-block">
-                <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=600&q=80" alt="Rede neural abstrata representando IA" class="img-responsive">
-            </div>
-        </section>
+        <div id="tecnologia" class="tab-content active">
+            <section class="grid-section">
+                <div class="text-block">
+                    <span class="cyber-badge">Mídias Sintéticas</span>
+                    <h2>A Engenharia das Deepfakes</h2>
+                    <p>As deepfakes representam o ápice da manipulação digital. Utilizando redes neurais artificiais avançadas, esses sistemas conseguem recriar rostos, sintetizar vozes e simular comportamentos humanos com precisão cirúrgica, tornando a linha entre o real e o simulado quase invisível.</p>
+                </div>
+                <div class="image-block">
+                    <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=600&q=80" alt="Interface tecnológica de IA" class="img-cyber">
+                </div>
+            </section>
+        </div>
 
-        <section class="quiz-container">
-            <div class="quiz-header">
-                <span class="badge alert">Evidência Científica</span>
-                <h2>A Velocidade da Desinformação</h2>
-                <p>Estudos indicam que a desinformação gerada por IA se propaga em uma velocidade muito superior às correções factuais.</p>
-                
-                <blockquote class="scientific-quote">
-                    <p>"A desinformação automatizada não apenas distorce fatos, mas corrói o tecido de confiança social nas instituições públicas e científicas, agindo de forma mais rápida do que as agências humanas conseguem desmentir."</p>
-                    <cite>— Journal of Digital Citizenship Studies, 2025</cite>
-                </blockquote>
-            </div>
-            
-            <form id="quiz-form">
-                <p class="quiz-question">De acordo com as boas práticas científicas, qual é o primeiro passo para mitigar os impactos de uma possível fake news?</p>
-                
-                <div class="options-group">
-                    <label class="option-card">
-                        <input type="radio" name="answer" value="incorrect1">
-                        <span class="option-text">Repassar a mensagem para grupos acadêmicos para avaliar a veracidade em conjunto.</span>
-                    </label>
+        <div id="artigos" class="tab-content">
+            <section class="quiz-container">
+                <div class="quiz-header">
+                    <span class="cyber-badge alert">Análise Acadêmica</span>
+                    <h2>Evidências de um Cenário em Mutação</h2>
+                    <p>Pesquisas recentes alertam para o perigo da automação na distribuição de conteúdos manipulados.</p>
                     
-                    <label class="option-card">
-                        <input type="radio" name="answer" value="correct">
-                        <span class="option-text">Suspender o compartilhamento, cruzar os dados com fontes primárias de informação e verificar inconsistências no arquivo de mídia.</span>
-                    </label>
-                    
-                    <label class="option-card">
-                        <input type="radio" name="answer" value="incorrect2">
-                        <span class="option-text">Confiar no material caso ele cite nomes de cientistas ou universidades sem fornecer o link direto do estudo.</span>
-                    </label>
+                    <blockquote class="scientific-quote">
+                        <p>"As Redes Adversariais Generativas (GANs) operam criando um ciclo contínuo de falsificação e detecção. Esse mecanismo acelera de forma exponencial a evolução do realismo das mídias sintéticas."</p>
+                        <cite>— Journal of Digital Citizenship Studies, 2025</cite>
+                    </blockquote>
                 </div>
                 
-                <button type="submit" class="btn-submit">Submeter Resposta</button>
-            </form>
-            
-            <div id="quiz-result" class="hidden"></div>
-        </section>
+                <form id="quiz-form">
+                    <p class="quiz-question">// DIRETRIZ DE SEGURANÇA: Qual a melhor conduta metodológica ao identificar um conteúdo suspeito?</p>
+                    
+                    <div class="options-group">
+                        <label class="option-card">
+                            <input type="radio" name="answer" value="incorrect1">
+                            <span class="option-text">Disseminar o arquivo para análise imediata em redes de conexões próximas.</span>
+                        </label>
+                        
+                        <label class="option-card">
+                            <input type="radio" name="answer" value="correct">
+                            <span class="option-text">Interromper a cadeia de compartilhamento e realizar o cruzamento de dados com fontes e repositórios oficiais.</span>
+                        </label>
+                        
+                        <label class="option-card">
+                            <input type="radio" name="answer" value="incorrect2">
+                            <span class="option-text">Validar o conteúdo caso ele use elementos gráficos de grandes emissoras ou portais sem o link original.</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">PROCESSAR RESPOSTA</button>
+                </form>
+                
+                <div id="quiz-result" class="hidden"></div>
+            </section>
+        </div>
 
-        <section class="grid-section reverse">
-            <div class="image-block">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Planeta digital representando dados globais" class="img-responsive">
-            </div>
-            <div class="text-block">
-                <span class="badge trivia">Fatos e Curiosidades</span>
-                <h2>Fatos Curiosos sobre a IA e Mídias Sintéticas</h2>
-                <p>Abaixo estão dados importantes levantados por pesquisadores do impacto digital:</p>
-                <ul class="features-list">
-                    <li><strong>Origem do termo:</strong> A palavra "Deepfake" surgiu em 2017 em fóruns digitais, unindo os conceitos de <em>Deep Learning</em> (Aprendizado Profundo) e <em>Fake</em> (Falso).</li>
-                    <li><strong>A assimetria dos olhos:</strong> Durante anos, os algoritmos de IA falhavam em simular o piscar de olhos natural humano, pois eram treinados majoritariamente com fotos de pessoas com os olhos abertos.</li>
-                    <li><strong>Áudio clonado:</strong> Atualmente, softwares avançados precisam de apenas 3 segundos de gravação da sua voz para clonar seu timbre perfeitamente.</li>
-                </ul>
-            </div>
-        </section>
+        <div id="curiosidades" class="tab-content">
+            <section class="grid-section reverse">
+                <div class="text-block">
+                    <span class="cyber-badge trivia">Dados Adicionais</span>
+                    <h2>Fatos Curiosos sobre Mídias Sintéticas</h2>
+                    <ul class="cyber-list">
+                        <li><strong>Fusão de Termos:</strong> A expressão surgiu em 2017 a partir da junção entre <em>Deep Learning</em> (Aprendizado Profundo) e <em>Fake</em> (Falso).</li>
+                        <li><strong>O Desafio do Olhar:</strong> Inicialmente, os algoritmos criavam rostos que não piscavam, pois as bases de dados de treinamento continham majoritariamente fotografias de pessoas com os olhos abertos.</li>
+                        <li><strong>Clonagem de Voz:</strong> Atualmente, amostras curtas de apenas 3 segundos de áudio limpo são suficientes para sintetizar clones vocais precisos.</li>
+                    </ul>
+                </div>
+                <div class="image-block">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Rede global de dados holográfica" class="img-cyber">
+                </div>
+            </section>
+        </div>
 
     </main>
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2026 Educação Digital e IA. Conteúdo estruturado para fins didáticos e científicos.</p>
+            <p>// PROJETO RECOVERY 2026 // COMPONENTE: EDUCAÇÃO DIGITAL E IA</p>
         </div>
     </footer>
 
