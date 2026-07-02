@@ -1,85 +1,86 @@
-<script>
-    // Configurações do Jogo da Memória
-    const emojis = ['🤖', '🤖', '🔒', '🔒', '💻', '💻', '🔍', '🔍', '🧠', '🧠', '🛡️', '🛡️', '📱', '📱', '🎭', '🎭'];
-    let shuffledEmojis = [];
-    let flippedCards = [];
-    let matchedPairs = 0;
-    let lockBoard = false; // Impede cliques extras durante a validação
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cidadania Digital: IA & Deepfakes</title>
+    <!-- Vinculação do arquivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    function shuffle(array) {
-        // Algoritmo confiável de ordenação aleatória
-        return array.sort(() => Math.random() - 0.5);
-    }
+    <header>
+        <h1>Cidadania Digital: IA & Deepfakes</h1>
+        <p>Impactos, ética e proteção no ambiente virtual moderno</p>
+    </header>
 
-    function createBoard() {
-        const grid = document.getElementById('gameGrid');
-        if (!grid) return; // Proteção caso o elemento HTML sumisse da tela
+    <!-- Menu de Navegação por Abas -->
+    <nav class="nav-container">
+        <button class="tab-btn active" data-tab="artigos" aria-selected="true">Artigos</button>
+        <button class="tab-btn" data-tab="quiz" aria-selected="false">Quiz</button>
+        <button class="tab-btn" data-tab="jogo" aria-selected="false">Jogo da Memória</button>
+    </nav>
 
-        grid.innerHTML = '';
-        shuffledEmojis = shuffle([...emojis]);
-        flippedCards = [];
-        matchedPairs = 0;
-        lockBoard = false;
+    <main>
+        <!-- ABA 1: ARTIGOS -->
+        <section id="artigos" class="tab-content active">
+            <h2>Artigos Informativos</h2>
+            <div class="article-card">
+                <img src="https://unsplash.com" alt="Conceito de IA">
+                <div class="article-content">
+                    <h3>O que é Inteligência Artificial e Cidadania Digital?</h3>
+                    <p>A cidadania digital exige o uso ético e crítico das novas tecnologias. Com o avanço da IA, precisamos aprender a discernir conteúdos reais de produções automatizadas para proteger nossa identidade online.</p>
+                </div>
+            </div>
+            <div class="article-card">
+                <img src="https://unsplash.com" alt="Segurança Digital">
+                <div class="article-content">
+                    <h3>O Perigo das Deepfakes</h3>
+                    <p>Deepfakes adulteram vídeos e vozes de forma ultra-realista para espalhar desinformação. Para se proteger, verifique sempre a origem do material e atente-se a pequenas distorções visuais e de áudio.</p>
+                </div>
+            </div>
+        </section>
 
-        shuffledEmojis.forEach((emoji, index) => {
-            const card = document.createElement('div');
-            card.classList.add('card');
-            card.dataset.index = index;
-            card.innerHTML = emoji;
-            card.addEventListener('click', flipCard);
-            grid.appendChild(card);
-        });
-    }
+        <!-- ABA 2: QUIZ -->
+        <section id="quiz" class="tab-content">
+            <h2>Quiz Interativo</h2>
+            <div class="quiz-container">
+                <form id="quiz-form">
+                    <p class="quiz-question">Qual é a melhor estratégia ao se deparar com um vídeo suspeito que pode ser uma deepfake?</p>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="incorrect">
+                        <span>Compartilhar imediatamente para alertar conhecidos.</span>
+                    </label>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="correct">
+                        <span>Interromper o compartilhamento e cruzar referências em canais oficiais.</span>
+                    </label>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="incorrect2">
+                        <span>Acreditar no vídeo se a imagem parecer muito perfeita.</span>
+                    </label>
 
-    function flipCard() {
-        if (lockBoard) return; // Bloqueia se o tabuleiro estiver travado
-        if (this === flippedCards[0]) return; // Evita clicar duas vezes na mesma carta
+                    <button type="submit" class="btn">Enviar Resposta</button>
+                </form>
+                <div id="quiz-result"></div>
+            </div>
+        </section>
 
-        this.classList.add('flipped');
-        flippedCards.push(this);
+        <!-- ABA 3: JOGO DA MEMÓRIA -->
+        <section id="jogo" class="tab-content">
+            <h2>Jogo da Memória: Conceitos de IA</h2>
+            <p class="game-instruction">Encontre os pares de emojis equivalentes sobre tecnologia e segurança cibernética.</p>
+            <div class="game-container">
+                <div id="gameGrid" class="grid"></div>
+                <button id="reset-btn" class="btn">Reiniciar Jogo</button>
+            </div>
+        </section>
+    </main>
 
-        if (flippedCards.length === 2) {
-            lockBoard = true; // Trava o clique para o usuário não bugar clicando em 3 cartas rápidas
-            setTimeout(checkMatch, 700);
-        }
-    }
-
-    function checkMatch() {
-        const [card1, card2] = flippedCards;
-        const index1 = card1.dataset.index;
-        const index2 = card2.dataset.index;
-
-        if (shuffledEmojis[index1] === shuffledEmojis[index2]) {
-            card1.classList.add('matched');
-            card2.classList.add('matched');
-            matchedPairs++;
-            
-            if (matchedPairs === emojis.length / 2) {
-                // Pequeno atraso no alerta para dar tempo da última carta virar visualmente
-                setTimeout(() => {
-                    alert('Parabéns! Você encontrou todos os conceitos de Cidadania Digital e IA!');
-                }, 300);
-            }
-            // Libera o tabuleiro imediatamente após o acerto
-            flippedCards = [];
-            lockBoard = false;
-        } else {
-            // Se errou, desvira as cartas após o tempo visual
-            setTimeout(() => {
-                card1.classList.remove('flipped');
-                card2.classList.remove('flipped');
-                flippedCards = [];
-                lockBoard = false; // Libera o tabuleiro após desvirar
-            }, 300);
-        }
-    }
-
-    function resetGame() {
-        createBoard();
-    }
-
-    // Garante que o código execute estritamente quando todo o HTML estiver renderizado
-    document.addEventListener('DOMContentLoaded', () => {
-        createBoard();
-    });
-</script>
+    <!-- Vinculação dos scripts JavaScript organizados no final do arquivo -->
+    <script src="script.js"></script>
+</body>
+</html>
