@@ -1,133 +1,249 @@
-    <main>
-        <!-- ABA 1: ARTIGOS -->
-        <section id="artigos" class="tab-content active">
-            <h2>Artigos Informativos</h2>
-            
-            <div class="article-card">
-                <!-- Imagem corrigida: Conceito de IA -->
-                <img src="https://unsplash.com" alt="Conceito de IA">
-                <div class="article-content">
-                    <h3>O que é Inteligência Artificial e Cidadania Digital?</h3>
-                    <p>A cidadania digital exige o uso ético e crítico das novas tecnologias. Com o avanço da IA, precisamos aprender a discernir conteúdos reais de produções automatizadas para proteger nossa identidade online.</p>
-                </div>
-            </div>
+:root {
+    --primary: #2563eb;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --accent: #06b6d4;
+    --success: #10b981;
+    --error: #ef4444;
+}
 
-            <div class="article-card">
-                <!-- Imagem corrigida: Segurança Digital / Deepfakes -->
-                <img src="https://unsplash.com" alt="Segurança Digital">
-                <div class="article-content">
-                    <h3>O Perigo das Deepfakes</h3>
-                    <p>Deepfakes adulteram vídeos e vozes de forma ultra-realista para espalhar desinformação. Para se proteger, verifique sempre a origem do material e atente-se a pequenas distorções visuais e de áudio.</p>
-                </div>
-            </div>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
 
-            <div class="article-card">
-                <!-- Imagem corrigida: Pegada Digital e Algoritmos -->
-                <img src="https://unsplash.com" alt="Pegada Digital e Algoritmos">
-                <div class="article-content">
-                    <h3>Sua Pegada Digital na Era dos Algoritmos</h3>
-                    <p>Cada curtida, comentário e clique alimenta os algoritmos de IA que moldam o que você vê na internet. Desenvolver uma consciência sobre seus dados ajuda a evitar bolhas de informação e manipulação comercial.</p>
-                </div>
-            </div>
+body {
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+}
 
-            <div class="article-card">
-                <!-- Imagem corrigida: Cibersegurança Prática -->
-                <img src="https://unsplash.com" alt="Cibersegurança Prática">
-                <div class="article-content">
-                    <h3>Como Praticar a Auto-Defesa Digital</h3>
-                    <p>Proteger-se contra fraudes baseadas em IA envolve o uso de autenticação em duas etapas (2FA), desconfiar de chamadas urgentes pedindo dinheiro (mesmo com vozes conhecidas) e limitar a exposição de dados pessoais públicos.</p>
-                </div>
-            </div>
-        </section>
+header {
+    background: linear-gradient(135deg, var(--dark), var(--primary));
+    color: white;
+    padding: 2.5rem 1rem;
+    text-align: center;
+}
 
-        <!-- ABA 2: CURIOSIDADES -->
-        <section id="curiosidades" class="tab-content">
-            <h2>Curiosidades Tecnológicas</h2>
-            <p class="section-intro">Fatos surpreendentes sobre o desenvolvimento da Inteligência Artificial e da segurança digital.</p>
-            
-            <div class="facts-grid">
-                <div class="fact-card">
-                    <span class="fact-icon">🎬</span>
-                    <h4>Origem do Termo</h4>
-                    <p>A palavra "Deepfake" surgiu em 2017 na comunidade online Reddit. Ela combina os termos <em>"Deep Learning"</em> (Aprendizado Profundo) e <em>"Fake"</em> (Falso).</p>
-                </div>
+/* Controle de Abas Dinâmico */
+.nav-container {
+    background: white;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-                <div class="fact-card">
-                    <span class="fact-icon">👁️</span>
-                    <h4>O Truque do Piscar</h4>
-                    <p>No início, os sistemas de IA não conseguiam criar deepfakes que piscavam os olhos corretamente, pois eram treinados com fotos estáticas onde as pessoas sempre apareciam de olhos abertos.</p>
-                </div>
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--dark);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+}
 
-                <div class="fact-card">
-                    <span class="fact-icon">🤖</span>
-                    <h4>IA contra IA</h4>
-                    <p>As melhores ferramentas para detectar vídeos falsificados são construídas usando outras Inteligências Artificiais programadas exclusivamente para caçar imperfeições em nível de pixel.</p>
-                </div>
+.tab-btn.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
 
-                <div class="fact-card">
-                    <span class="fact-icon">📜</span>
-                    <h4>Termo Antigo</h4>
-                    <p>O conceito de "Inteligência Artificial" não é novo. Ele foi cunhado pelo cientista John McCarthy no ano de 1956, durante uma famosa conferência de verão em Dartmouth.</p>
-                </div>
-            </div>
-        </section>
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
 
-        <!-- ABA 3: QUIZ -->
-        <section id="quiz" class="tab-content">
-            <h2>Quiz Interativo</h2>
-            <div class="quiz-container">
-                <form id="quiz-form">
-                    <div class="quiz-step">
-                        <p class="quiz-question">1. Qual é a melhor estratégia ao se deparar com um vídeo suspeito que pode ser uma deepfake?</p>
-                        
-                        <label class="quiz-option">
-                            <input type="radio" name="q1" value="incorrect">
-                            <span>Compartilhar imediatamente para alertar conhecidos.</span>
-                        </label>
-                        
-                        <label class="quiz-option">
-                            <input type="radio" name="q1" value="correct">
-                            <span>Interromper o compartilhamento e cruzar referências em canais oficiais.</span>
-                        </label>
-                        
-                        <label class="quiz-option">
-                            <input type="radio" name="q1" value="incorrect2">
-                            <span>Acreditar no vídeo se a imagem parecer muito perfeita.</span>
-                        </label>
-                    </div>
+.tab-content {
+    display: none;
+}
 
-                    <div class="quiz-step">
-                        <p class="quiz-question">2. O que significa "Cidadania Digital"?</p>
-                        
-                        <label class="quiz-option">
-                            <input type="radio" name="q2" value="incorrect">
-                            <span>Navegar na internet o dia todo sem nenhuma restrição ou cuidado.</span>
-                        </label>
-                        
-                        <label class="quiz-option">
-                            <input type="radio" name="q2" value="correct">
-                            <span>Utilizar a tecnologia de forma ética, segura, responsável e crítica.</span>
-                        </label>
-                        
-                        <label class="quiz-option">
-                            <input type="radio" name="q2" value="incorrect2">
-                            <span>Comprar apenas produtos eletrônicos certificados pelo governo.</span>
-                        </label>
-                    </div>
+.tab-content.active {
+    display: block;
+}
 
-                    <button type="submit" class="btn">Enviar Respostas</button>
-                </form>
-                <div id="quiz-result"></div>
-            </div>
-        </section>
+h2 {
+    color: var(--primary);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
 
-        <!-- ABA 4: JOGO DA MEMÓRIA -->
-        <section id="jogo" class="tab-content">
-            <h2>Jogo da Memória: Conceitos de IA</h2>
-            <p class="game-instruction">Encontre os pares de emojis equivalentes sobre tecnologia e segurança cibernética.</p>
-            <div class="game-container">
-                <div id="gameGrid" class="grid"></div>
-                <button id="reset-btn" class="btn">Reiniciar Jogo</button>
-            </div>
-        </section>
-    </main>
+/* Cards de Artigo */
+.article-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 600px) {
+    .article-card { flex-direction: row; }
+    .article-card img { width: 35%; object-fit: cover; }
+    .article-content { width: 65%; }
+}
+
+.article-card img { height: 200px; object-fit: cover; }
+.article-content { padding: 1.5rem; }
+.article-content h3 { margin-bottom: 0.5rem; }
+
+/* ==========================================
+   NOVA SEÇÃO: CURIOSIDADES
+   ========================================== */
+.section-intro {
+    margin-bottom: 1.5rem;
+    color: #64748b;
+}
+
+.facts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 600px) {
+    .facts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.fact-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--accent);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+.fact-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.fact-card h4 {
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+}
+
+.fact-card p {
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   QUIZ (Ajustado para Múltiplas Perguntas)
+   ========================================== */
+.quiz-container {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.quiz-step {
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.quiz-step:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.quiz-question { 
+    font-weight: bold; 
+    margin-bottom: 1rem; 
+    color: var(--dark);
+}
+
+.quiz-option { 
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem; 
+    cursor: pointer; 
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.quiz-option:hover {
+    background: var(--light);
+}
+
+.quiz-option input { 
+    margin-right: 0.75rem; 
+    transform: scale(1.1);
+}
+
+#quiz-result {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    display: none;
+    line-height: 1.5;
+}
+
+#quiz-result.success { display: block; background: #e6f4ea; color: var(--success); border-left: 5px solid var(--success); }
+#quiz-result.error { display: block; background: #fce8e6; color: var(--error); border-left: 5px solid var(--error); }
+
+/* Jogo da Memória */
+.game-container { text-align: center; }
+.game-instruction { margin-bottom: 1rem; }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 400px;
+    margin: 1.5rem auto;
+}
+
+.card {
+    height: 90px;
+    background-color: var(--primary);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    font-size: 2rem;
+    user-select: none;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.card.flipped { background-color: var(--accent); color: white; transform: rotateY(180deg); }
+.card.matched { background-color: var(--success); color: white; cursor: default; }
+
+.btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+.btn:hover { background: #1d4ed8; }
