@@ -1,249 +1,86 @@
-:root {
-    --primary: #2563eb;
-    --dark: #1e293b;
-    --light: #f8fafc;
-    --accent: #06b6d4;
-    --success: #10b981;
-    --error: #ef4444;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cidadania Digital: IA & Deepfakes</title>
+    <!-- VINCULAÇÃO DO ARQUIVO CSS EXTERNO -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-}
+    <header>
+        <h1>Cidadania Digital: IA & Deepfakes</h1>
+        <p>Impactos, ética e proteção no ambiente virtual moderno</p>
+    </header>
 
-body {
-    background-color: var(--light);
-    color: var(--dark);
-    line-height: 1.6;
-}
+    <!-- Menu de Navegação por Abas -->
+    <nav class="nav-container">
+        <button class="tab-btn active" data-tab="artigos" aria-selected="true">Artigos</button>
+        <button class="tab-btn" data-tab="quiz" aria-selected="false">Quiz</button>
+        <button class="tab-btn" data-tab="jogo" aria-selected="false">Jogo da Memória</button>
+    </nav>
 
-header {
-    background: linear-gradient(135deg, var(--dark), var(--primary));
-    color: white;
-    padding: 2.5rem 1rem;
-    text-align: center;
-}
+    <main>
+        <!-- ABA 1: ARTIGOS -->
+        <section id="artigos" class="tab-content active">
+            <h2>Artigos Informativos</h2>
+            <div class="article-card">
+                <img src="https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Conceito de IA">
+                <div class="article-content">
+                    <h3>O que é Inteligência Artificial e Cidadania Digital?</h3>
+                    <p>A cidadania digital exige o uso ético e crítico das novas tecnologias. Com o avanço da IA, precisamos aprender a discernir conteúdos reais de produções automatizadas para proteger nossa identidade online.</p>
+                </div>
+            </div>
+            <div class="article-card">
+                <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2VndXJhbiVDMyVBN2ElMjBkaWdpdGFsfGVufDB8fDB8fHww" alt="Segurança Digital">
+                <div class="article-content">
+                    <h3>O Perigo das Deepfakes</h3>
+                    <p>Deepfakes adulteram vídeos e vozes de forma ultra-realista para espalhar desinformação. Para se proteger, verifique sempre a origem do material e atente-se a pequenas distorções visuais e de áudio.</p>
+                </div>
+            </div>
+        </section>
 
-/* Controle de Abas Dinâmico */
-.nav-container {
-    background: white;
-    display: flex;
-    justify-content: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
+        <!-- ABA 2: QUIZ -->
+        <section id="quiz" class="tab-content">
+            <h2>Quiz Interativo</h2>
+            <div class="quiz-container">
+                <form id="quiz-form">
+                    <p class="quiz-question">Qual é a melhor estratégia ao se deparar com um vídeo suspeito que pode ser uma deepfake?</p>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="incorrect">
+                        <span>Compartilhar imediatamente para alertar conhecidos.</span>
+                    </label>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="correct">
+                        <span>Interromper o compartilhamento e cruzar referências em canais oficiais.</span>
+                    </label>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="incorrect2">
+                        <span>Acreditar no vídeo se a imagem parecer muito perfeita.</span>
+                    </label>
 
-.tab-btn {
-    background: none;
-    border: none;
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--dark);
-    cursor: pointer;
-    border-bottom: 3px solid transparent;
-    transition: all 0.3s;
-}
+                    <button type="submit" class="btn">Enviar Resposta</button>
+                </form>
+                <div id="quiz-result"></div>
+            </div>
+        </section>
 
-.tab-btn.active {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
-}
+        <!-- ABA 3: JOGO DA MEMÓRIA -->
+        <section id="jogo" class="tab-content">
+            <h2>Jogo da Memória: Conceitos de IA</h2>
+            <p class="game-instruction">Encontre os pares de emojis equivalentes sobre tecnologia e segurança cibernética.</p>
+            <div class="game-container">
+                <div id="gameGrid" class="grid"></div>
+                <button id="reset-btn" class="btn">Reiniciar Jogo</button>
+            </div>
+        </section>
+    </main>
 
-main {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-.tab-content {
-    display: none;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-h2 {
-    color: var(--primary);
-    border-bottom: 2px solid var(--accent);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-/* Cards de Artigo */
-.article-card {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    margin-bottom: 1.5rem;
-    display: flex;
-    flex-direction: column;
-}
-
-@media (min-width: 600px) {
-    .article-card { flex-direction: row; }
-    .article-card img { width: 35%; object-fit: cover; }
-    .article-content { width: 65%; }
-}
-
-.article-card img { height: 200px; object-fit: cover; }
-.article-content { padding: 1.5rem; }
-.article-content h3 { margin-bottom: 0.5rem; }
-
-/* ==========================================
-   NOVA SEÇÃO: CURIOSIDADES
-   ========================================== */
-.section-intro {
-    margin-bottom: 1.5rem;
-    color: #64748b;
-}
-
-.facts-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-@media (min-width: 600px) {
-    .facts-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.fact-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    border-top: 4px solid var(--accent);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.fact-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-}
-
-.fact-icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.fact-card h4 {
-    color: var(--dark);
-    margin-bottom: 0.5rem;
-    font-size: 1.15rem;
-}
-
-.fact-card p {
-    color: #475569;
-    font-size: 0.95rem;
-}
-
-/* ==========================================
-   QUIZ (Ajustado para Múltiplas Perguntas)
-   ========================================== */
-.quiz-container {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.quiz-step {
-    border-bottom: 1px solid #e2e8f0;
-    padding-bottom: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.quiz-step:last-of-type {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.quiz-question { 
-    font-weight: bold; 
-    margin-bottom: 1rem; 
-    color: var(--dark);
-}
-
-.quiz-option { 
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.8rem; 
-    cursor: pointer; 
-    padding: 0.5rem;
-    border-radius: 4px;
-    transition: background 0.2s;
-}
-
-.quiz-option:hover {
-    background: var(--light);
-}
-
-.quiz-option input { 
-    margin-right: 0.75rem; 
-    transform: scale(1.1);
-}
-
-#quiz-result {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    border-radius: 5px;
-    font-weight: bold;
-    display: none;
-    line-height: 1.5;
-}
-
-#quiz-result.success { display: block; background: #e6f4ea; color: var(--success); border-left: 5px solid var(--success); }
-#quiz-result.error { display: block; background: #fce8e6; color: var(--error); border-left: 5px solid var(--error); }
-
-/* Jogo da Memória */
-.game-container { text-align: center; }
-.game-instruction { margin-bottom: 1rem; }
-.grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    max-width: 400px;
-    margin: 1.5rem auto;
-}
-
-.card {
-    height: 90px;
-    background-color: var(--primary);
-    border-radius: 6px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: transparent;
-    font-size: 2rem;
-    user-select: none;
-    transition: background 0.2s, transform 0.2s;
-}
-
-.card.flipped { background-color: var(--accent); color: white; transform: rotateY(180deg); }
-.card.matched { background-color: var(--success); color: white; cursor: default; }
-
-.btn {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: background 0.2s;
-}
-.btn:hover { background: #1d4ed8; }
+    <!-- VINCULAÇÃO DO ARQUIVO JAVASCRIPT EXTERNO -->
+    <script src="script.js"></script>
+</body>
+</html>
