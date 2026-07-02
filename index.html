@@ -1,353 +1,85 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cidadania Digital: IA & Deepfakes</title>
-    
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<script>
+    // Configurações do Jogo da Memória
+    const emojis = ['🤖', '🤖', '🔒', '🔒', '💻', '💻', '🔍', '🔍', '🧠', '🧠', '🛡️', '🛡️', '📱', '📱', '🎭', '🎭'];
+    let shuffledEmojis = [];
+    let flippedCards = [];
+    let matchedPairs = 0;
+    let lockBoard = false; // Impede cliques extras durante a validação
 
-    <style>
-        /* Paleta de Cores de Alta Tecnologia (Cyberpunk/Sci-Fi) */
-        :root {
-            --bg-main: #060814;          
-            --bg-card: #0c102b;          
-            --text-primary: #f0f4f9;     
-            --text-secondary: #8a9fc4;   
-            --neon-blue: #00f2fe;        
-            --neon-purple: #9d4edd;      
-            --neon-green: #39ff14;       
-            --neon-red: #ff0055;         
-            --border-cyber: #1e265c;     
+    function shuffle(array) {
+        // Algoritmo confiável de ordenação aleatória
+        return array.sort(() => Math.random() - 0.5);
+    }
+
+    function createBoard() {
+        const grid = document.getElementById('gameGrid');
+        if (!grid) return; // Proteção caso o elemento HTML sumisse da tela
+
+        grid.innerHTML = '';
+        shuffledEmojis = shuffle([...emojis]);
+        flippedCards = [];
+        matchedPairs = 0;
+        lockBoard = false;
+
+        shuffledEmojis.forEach((emoji, index) => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.dataset.index = index;
+            card.innerHTML = emoji;
+            card.addEventListener('click', flipCard);
+            grid.appendChild(card);
+        });
+    }
+
+    function flipCard() {
+        if (lockBoard) return; // Bloqueia se o tabuleiro estiver travado
+        if (this === flippedCards[0]) return; // Evita clicar duas vezes na mesma carta
+
+        this.classList.add('flipped');
+        flippedCards.push(this);
+
+        if (flippedCards.length === 2) {
+            lockBoard = true; // Trava o clique para o usuário não bugar clicando em 3 cartas rápidas
+            setTimeout(checkMatch, 700);
         }
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    function checkMatch() {
+        const [card1, card2] = flippedCards;
+        const index1 = card1.dataset.index;
+        const index2 = card2.dataset.index;
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-        }
-
-        header {
-            background: linear-gradient(180deg, #0c102b 0%, var(--bg-main) 100%);
-            border-bottom: 2px solid var(--border-cyber);
-            padding: 40px 20px 0 20px;
-            text-align: center;
-        }
-
-        .logo-cyber {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
-        .logo-cyber span {
-            color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue);
-        }
-
-        header h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 900;
-            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-        }
-
-        /* Abas de Navegação */
-        .tabs-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .tab-btn {
-            background: #090d22;
-            border: 1px solid var(--border-cyber);
-            border-bottom: none;
-            color: var(--text-secondary);
-            padding: 14px 24px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            cursor: pointer;
-            border-radius: 6px 6px 0 0;
-            transition: all 0.3s ease;
-        }
-
-        .tab-btn:hover {
-            color: var(--neon-blue);
-            background: #10163a;
-        }
-
-        .tab-btn:focus-visible {
-            outline: 2px solid var(--neon-purple);
-            outline-offset: -4px;
-        }
-
-        .tab-btn.active {
-            background: var(--bg-card);
-            color: var(--neon-blue);
-            border-color: var(--neon-blue);
-            box-shadow: 0 -4px 10px rgba(0, 242, 254, 0.15);
-        }
-
-        /* Exibição de Conteúdo */
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        /* Layout Estrutural */
-        .container {
-            max-width: 1100px;
-            width: 100%;
-            margin: 40px auto;
-            padding: 0 20px;
-            flex: 1;
-        }
-
-        .grid-section {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-cyber);
-            padding: 40px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-
-        .grid-section.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .text-block, .image-block {
-            flex: 1;
-        }
-
-        /* Componentes de Interface */
-        .cyber-badge {
-            display: inline-block;
-            background: rgba(0, 242, 254, 0.08);
-            border: 1px solid var(--neon-blue);
-            color: var(--neon-blue);
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            border-radius: 4px;
-        }
-
-        .cyber-badge.alert {
-            background: rgba(255, 0, 85, 0.08);
-            border-color: var(--neon-red);
-            color: var(--neon-red);
-        }
-
-        .cyber-badge.trivia {
-            background: rgba(157, 78, 221, 0.08);
-            border-color: var(--neon-purple);
-            color: var(--neon-purple);
-        }
-
-        h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        /* Sistema de Quiz */
-        .quiz-container {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-cyber);
-            padding: 40px;
-            border-radius: 8px;
-        }
-
-        .quiz-question {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--neon-blue);
-            margin: 25px 0 20px 0;
-        }
-
-        .options-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .option-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            background-color: rgba(6, 8, 20, 0.6);
-            border: 1px solid var(--border-cyber);
-            padding: 16px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .option-card:hover {
-            border-color: var(--neon-blue);
-        }
-
-        .btn-submit {
-            background: linear-gradient(90deg, #00c6ff, #0072ff);
-            color: #ffffff;
-            border: none;
-            padding: 16px;
-            width: 100%;
-            border-radius: 6px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            cursor: pointer;
-            transition: transform 0.1s ease, box-shadow 0.2s ease;
-        }
-
-        .btn-submit:hover {
-            box-shadow: 0 0 15px rgba(0, 198, 255, 0.4);
-        }
-
-        #quiz-result {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 6px;
-            text-align: center;
-            border: 1px solid transparent;
-            font-weight: 600;
-        }
-
-        #quiz-result.success {
-            background-color: rgba(57, 255, 20, 0.05);
-            color: var(--neon-green);
-            border-color: var(--neon-green);
-        }
-
-        #quiz-result.error {
-            background-color: rgba(255, 0, 85, 0.05);
-            color: var(--neon-red);
-            border-color: var(--neon-red);
-        }
-
-        /* Listas Customizadas */
-        .cyber-list li {
-            color: var(--text-secondary);
-            margin-bottom: 15px;
-            padding-left: 25px;
-            position: relative;
-            list-style: none;
-        }
-
-        .cyber-list li::before {
-            content: "//";
-            position: absolute;
-            left: 0;
-            color: var(--neon-purple);
-        }
-
-        .scientific-quote {
-            border-left: 3px solid var(--neon-purple);
-            background: rgba(157, 78, 221, 0.03);
-            padding: 20px;
-            margin-top: 25px;
-            border-radius: 0 6px 6px 0;
-        }
-
-        .scientific-quote p {
-            color: var(--text-primary);
-            font-style: italic;
-            margin-bottom: 0;
-        }
-
-        .scientific-quote cite {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            display: block;
-            margin-top: 10px;
-        }
-
-        /* Rodapé */
-        footer {
-            background-color: #04060f;
-            border-top: 1px solid var(--border-cyber);
-            padding: 25px;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        footer p {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-        }
-
-        /* Animações e Responsividade */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .grid-section, .grid-section.reverse {
-                flex-direction: column;
-                gap: 30px;
-                padding: 20px;
+        if (shuffledEmojis[index1] === shuffledEmojis[index2]) {
+            card1.classList.add('matched');
+            card2.classList.add('matched');
+            matchedPairs++;
+            
+            if (matchedPairs === emojis.length / 2) {
+                // Pequeno atraso no alerta para dar tempo da última carta virar visualmente
+                setTimeout(() => {
+                    alert('Parabéns! Você encontrou todos os conceitos de Cidadania Digital e IA!');
+                }, 300);
             }
-            .tabs-container {
-                flex-direction: column;
-                gap: 5px;
-            }
+            // Libera o tabuleiro imediatamente após o acerto
+            flippedCards = [];
+            lockBoard = false;
+        } else {
+            // Se errou, desvira as cartas após o tempo visual
+            setTimeout(() => {
+                card1.classList.remove('flipped');
+                card2.classList.remove('flipped');
+                flippedCards = [];
+                lockBoard = false; // Libera o tabuleiro após desvirar
+            }, 300);
         }
-    </style>
-</head>
-<body>
+    }
 
-    <header>
-        <div class="logo-cyber"><span>CIDADANIA</span> DIGITAL</div>
-        <h1>IA & Deepfakes</h1>
-        <p class="subtitle">Descubra os impactos, a ética e como se proteger no ambiente virtual moderno.</p>
-        
-        <!-- Abas de Navegação -->
-        <div class="tabs-container" role="tablist">
-            <button class="tab-btn active" data-tab="conteudo" role="tab" aria-selected="true">Conteúdo Informativo</button>
-            <button class="tab-btn" data-tab="quiz-section" role="tab" aria-selected="false">Laboratório Quiz</button>
-        </div>
-    </header>
+    function resetGame() {
+        createBoard();
+    }
 
-    <div class="container">
+    // Garante que o código execute estritamente quando todo o HTML estiver renderizado
+    document.addEventListener('DOMContentLoaded', () => {
+        createBoard();
+    });
+</script>
