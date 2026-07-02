@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 2. Validador do Quiz
+    // 2. Validador do Quiz (CORRIGIDO)
     const quizForm = document.getElementById("quiz-form");
     const quizResult = document.getElementById("quiz-result");
 
@@ -39,12 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
             
             quizResult.className = ""; // Reseta classes antigas
             
+            // CORREÇÃO AQUI: Verificamos se selectedOption existe ANTES de ler o seu ".value"
             if (!selectedOption) {
                 quizResult.textContent = "⚠️ PARÂMETRO AUSENTE: Selecione uma alternativa para análise.";
                 quizResult.classList.add("error");
-                return;
+                return; // Para a execução aqui com segurança
             }
 
+            // Agora sim é seguro ler a propriedade .value
             if (selectedOption.value === "correct") {
                 quizResult.textContent = "✓ SUCESSO: Interromper o compartilhamento e cruzar referências com repositórios oficiais mitiga a proliferação da desinformação.";
                 quizResult.classList.add("success");
