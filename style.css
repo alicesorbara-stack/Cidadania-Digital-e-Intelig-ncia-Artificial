@@ -97,7 +97,61 @@ h2 {
 .article-content { padding: 1.5rem; }
 .article-content h3 { margin-bottom: 0.5rem; }
 
-/* Quiz */
+/* ==========================================
+   NOVA SEÇÃO: CURIOSIDADES
+   ========================================== */
+.section-intro {
+    margin-bottom: 1.5rem;
+    color: #64748b;
+}
+
+.facts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 600px) {
+    .facts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.fact-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--accent);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+.fact-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.fact-card h4 {
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+}
+
+.fact-card p {
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   QUIZ (Ajustado para Múltiplas Perguntas)
+   ========================================== */
 .quiz-container {
     background: white;
     padding: 1.5rem;
@@ -105,20 +159,53 @@ h2 {
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-.quiz-question { font-weight: bold; margin-bottom: 1rem; }
-.quiz-option { display: block; margin-bottom: 0.8rem; cursor: pointer; }
-.quiz-option input { margin-right: 0.5rem; }
+.quiz-step {
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.quiz-step:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.quiz-question { 
+    font-weight: bold; 
+    margin-bottom: 1rem; 
+    color: var(--dark);
+}
+
+.quiz-option { 
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem; 
+    cursor: pointer; 
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.quiz-option:hover {
+    background: var(--light);
+}
+
+.quiz-option input { 
+    margin-right: 0.75rem; 
+    transform: scale(1.1);
+}
 
 #quiz-result {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     padding: 1rem;
     border-radius: 5px;
     font-weight: bold;
     display: none;
+    line-height: 1.5;
 }
 
-#quiz-result.success { display: block; background: #e6f4ea; color: var(--success); }
-#quiz-result.error { display: block; background: #fce8e6; color: var(--error); }
+#quiz-result.success { display: block; background: #e6f4ea; color: var(--success); border-left: 5px solid var(--success); }
+#quiz-result.error { display: block; background: #fce8e6; color: var(--error); border-left: 5px solid var(--error); }
 
 /* Jogo da Memória */
 .game-container { text-align: center; }
@@ -157,5 +244,6 @@ h2 {
     cursor: pointer;
     font-weight: bold;
     font-size: 1rem;
+    transition: background 0.2s;
 }
 .btn:hover { background: #1d4ed8; }
