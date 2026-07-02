@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ==========================================
-       2. VALIDADOR DO QUIZ (Atualizado para Múltiplas Perguntas)
+       2. VALIDADOR DO QUIZ (Sem travas de nulo)
        ========================================== */
     const quizForm = document.getElementById("quiz-form");
     const quizResult = document.getElementById("quiz-result");
@@ -34,33 +34,20 @@ document.addEventListener("DOMContentLoaded", () => {
         quizForm.addEventListener("submit", (event) => {
             event.preventDefault(); 
 
-            // Busca as respostas selecionadas para cada uma das perguntas
-            const q1Answer = document.querySelector('input[name="q1"]:checked');
-            const q2Answer = document.querySelector('input[name="q2"]:checked');
-            
+            const selectedOption = document.querySelector('input[name="answer"]:checked');
             quizResult.className = ""; 
             
-            // Validação: verifica se todas as perguntas foram respondidas
-            if (!q1Answer || !q2Answer) {
-                quizResult.textContent = "⚠️ PARÂMETRO AUSENTE: Responda a todas as questões para análise.";
+            if (!selectedOption) {
+                quizResult.textContent = "⚠️ PARÂMETRO AUSENTE: Selecione uma alternativa para análise.";
                 quizResult.classList.add("error");
                 return;
             }
 
-            // Contabiliza os acertos
-            let correctCount = 0;
-            if (q1Answer.value === "correct") correctCount++;
-            if (q2Answer.value === "correct") correctCount++;
-
-            // Exibe o resultado com base no desempenho do usuário
-            if (correctCount === 2) {
-                quizResult.textContent = "✓ SUCESSO COMPLETO: Você acertou as 2 questões! Demonstra excelente criticidade sobre mídias sintéticas e ética digital.";
+            if (selectedOption.value === "correct") {
+                quizResult.textContent = "✓ SUCESSO: Interromper o compartilhamento e cruzar referências com repositórios oficiais mitiga a proliferação da desinformação.";
                 quizResult.classList.add("success");
-            } else if (correctCount === 1) {
-                quizResult.textContent = "⚠ ATENÇÃO PARCIAL: Você acertou 1 de 2 questões. Lembre-se que tanto a checagem rigorosa quanto o uso ético da rede são obrigatórios.";
-                quizResult.classList.add("error");
             } else {
-                quizResult.textContent = "✕ ANOMALIA CRÍTICA: Nenhuma resposta correta. As mídias sintéticas e algoritmos simulam credibilidade com exatidão. Revise os artigos.";
+                quizResult.textContent = "✕ ANOMALIA: As mídias sintéticas replicam padrões formais de credibilidade com exatidão. A checagem primária é mandatória.";
                 quizResult.classList.add("error");
             }
         });
