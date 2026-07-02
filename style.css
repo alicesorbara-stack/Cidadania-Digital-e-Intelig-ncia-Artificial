@@ -1,338 +1,161 @@
-/* Paleta de Cores de Alta Tecnologia (Cyberpunk/Sci-Fi) */
 :root {
-    --bg-main: #060814;          
-    --bg-card: #0c102b;          
-    --text-primary: #f0f4f9;     
-    --text-secondary: #8a9fc4;   
-    --neon-blue: #00f2fe;        
-    --neon-purple: #9d4edd;      
-    --neon-green: #39ff14;       
-    --neon-red: #ff0055;         
-    --border-cyber: #1e265c;     
+    --primary: #2563eb;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --accent: #06b6d4;
+    --success: #10b981;
+    --error: #ef4444;
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-main);
-    color: var(--text-primary);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
 }
 
 header {
-    background: linear-gradient(180deg, #0c102b 0%, var(--bg-main) 100%);
-    border-bottom: 2px solid var(--border-cyber);
-    padding: 40px 20px 0 20px;
+    background: linear-gradient(135deg, var(--dark), var(--primary));
+    color: white;
+    padding: 2.5rem 1rem;
     text-align: center;
 }
 
-.logo-cyber {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-}
-
-.logo-cyber span {
-    color: var(--neon-blue);
-    text-shadow: 0 0 10px var(--neon-blue);
-}
-
-header h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 900;
-    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    max-width: 600px;
-    margin: 0 auto 30px auto;
-}
-
-/* Abas de Navegação */
-.tabs-container {
+/* Controle de Abas Dinâmico */
+.nav-container {
+    background: white;
     display: flex;
     justify-content: center;
-    gap: 10px;
-    max-width: 800px;
-    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .tab-btn {
-    background: #090d22;
-    border: 1px solid var(--border-cyber);
-    border-bottom: none;
-    color: var(--text-secondary);
-    padding: 14px 24px;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
+    background: none;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--dark);
     cursor: pointer;
-    border-radius: 6px 6px 0 0;
-    transition: all 0.3s ease;
-}
-
-.tab-btn:hover {
-    color: var(--neon-blue);
-    background: #10163a;
-}
-
-.tab-btn:focus-visible {
-    outline: 2px solid var(--neon-purple);
-    outline-offset: -4px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
 }
 
 .tab-btn.active {
-    background: var(--bg-card);
-    color: var(--neon-blue);
-    border-color: var(--neon-blue);
-    box-shadow: 0 -4px 10px rgba(0, 242, 254, 0.15);
+    color: var(--primary);
+    border-bottom-color: var(--primary);
 }
 
-/* Exibição de Conteúdo */
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
 .tab-content {
     display: none;
 }
 
 .tab-content.active {
     display: block;
-    animation: fadeIn 0.4s ease-in-out;
-}
-
-/* Layout Estrutural */
-.container {
-    max-width: 1100px;
-    width: 100%;
-    margin: 40px auto;
-    padding: 0 20px;
-    flex: 1;
-}
-
-.grid-section {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-cyber);
-    padding: 40px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-}
-
-.grid-section.reverse {
-    flex-direction: row-reverse;
-}
-
-.text-block, .image-block {
-    flex: 1;
-}
-
-/* Componentes de Interface */
-.cyber-badge {
-    display: inline-block;
-    background: rgba(0, 242, 254, 0.08);
-    border: 1px solid var(--neon-blue);
-    color: var(--neon-blue);
-    padding: 4px 12px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    border-radius: 4px;
-}
-
-.cyber-badge.alert {
-    background: rgba(255, 0, 85, 0.08);
-    border-color: var(--neon-red);
-    color: var(--neon-red);
-}
-
-.cyber-badge.trivia {
-    background: rgba(157, 78, 221, 0.08);
-    border-color: var(--neon-purple);
-    color: var(--neon-purple);
 }
 
 h2 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+    color: var(--primary);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
-p {
-    color: var(--text-secondary);
-    line-height: 1.6;
-}
-
-.img-cyber {
-    width: 100%;
-    max-height: 350px;
-    object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid var(--border-cyber);
-}
-
-.scientific-quote {
-    border-left: 3px solid var(--neon-purple);
-    background: rgba(157, 78, 221, 0.03);
-    padding: 20px;
-    margin-top: 25px;
-    border-radius: 0 6px 6px 0;
-}
-
-.scientific-quote p {
-    color: var(--text-primary);
-    font-style: italic;
-}
-
-.scientific-quote cite {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    display: block;
-    margin-top: 10px;
-}
-
-/* Sistema de Quiz */
-.quiz-container {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-cyber);
-    padding: 40px;
+/* Cards de Artigo */
+.article-card {
+    background: white;
     border-radius: 8px;
-}
-
-.quiz-question {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--neon-blue);
-    margin: 25px 0 20px 0;
-}
-
-.options-group {
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 25px;
 }
 
-.option-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    background-color: rgba(6, 8, 20, 0.6);
-    border: 1px solid var(--border-cyber);
-    padding: 16px;
-    border-radius: 6px;
-    cursor: pointer;
+@media (min-width: 600px) {
+    .article-card { flex-direction: row; }
+    .article-card img { width: 35%; object-fit: cover; }
+    .article-content { width: 65%; }
 }
 
-.option-card:hover {
-    border-color: var(--neon-blue);
+.article-card img { height: 200px; object-fit: cover; }
+.article-content { padding: 1.5rem; }
+.article-content h3 { margin-bottom: 0.5rem; }
+
+/* Quiz */
+.quiz-container {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-.btn-submit {
-    background: linear-gradient(90deg, #00c6ff, #0072ff);
-    color: #ffffff;
-    border: none;
-    padding: 16px;
-    width: 100%;
-    border-radius: 6px;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 900;
-    cursor: pointer;
-    transition: transform 0.1s ease, box-shadow 0.2s ease;
-}
-
-.btn-submit:hover {
-    box-shadow: 0 0 15px rgba(0, 198, 255, 0.4);
-}
-
-.btn-submit:active {
-    transform: scale(0.98);
-}
+.quiz-question { font-weight: bold; margin-bottom: 1rem; }
+.quiz-option { display: block; margin-bottom: 0.8rem; cursor: pointer; }
+.quiz-option input { margin-right: 0.5rem; }
 
 #quiz-result {
-    margin-top: 20px;
-    padding: 15px;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    display: none;
+}
+
+#quiz-result.success { display: block; background: #e6f4ea; color: var(--success); }
+#quiz-result.error { display: block; background: #fce8e6; color: var(--error); }
+
+/* Jogo da Memória */
+.game-container { text-align: center; }
+.game-instruction { margin-bottom: 1rem; }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 400px;
+    margin: 1.5rem auto;
+}
+
+.card {
+    height: 90px;
+    background-color: var(--primary);
     border-radius: 6px;
-    text-align: center;
-    border: 1px solid transparent;
-    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    font-size: 2rem;
+    user-select: none;
+    transition: background 0.2s, transform 0.2s;
 }
 
-#quiz-result.success {
-    background-color: rgba(57, 255, 20, 0.05);
-    color: var(--neon-green);
-    border-color: var(--neon-green);
-}
+.card.flipped { background-color: var(--accent); color: white; transform: rotateY(180deg); }
+.card.matched { background-color: var(--success); color: white; cursor: default; }
 
-#quiz-result.error {
-    background-color: rgba(255, 0, 85, 0.05);
-    color: var(--neon-red);
-    border-color: var(--neon-red);
+.btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
 }
-
-/* Listas Customizadas */
-.cyber-list li {
-    color: var(--text-secondary);
-    margin-bottom: 15px;
-    padding-left: 25px;
-    position: relative;
-    list-style: none;
-}
-
-.cyber-list li::before {
-    content: "//";
-    position: absolute;
-    left: 0;
-    color: var(--neon-purple);
-}
-
-/* Rodapé */
-footer {
-    background-color: #04060f;
-    border-top: 1px solid var(--border-cyber);
-    padding: 25px;
-    text-align: center;
-    margin-top: auto;
-}
-
-footer p {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.75rem;
-}
-
-/* Animações e Responsividade */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 768px) {
-    .grid-section, .grid-section.reverse {
-        flex-direction: column;
-        gap: 30px;
-        padding: 20px;
-    }
-    .tabs-container {
-        flex-direction: column;
-        gap: 5px;
-    }
-    .tab-btn {
-        border-radius: 4px;
-        border-bottom: 1px solid var(--border-cyber);
-    }
-}
+.btn:hover { background: #1d4ed8; }
