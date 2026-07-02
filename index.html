@@ -17,6 +17,7 @@
     <!-- Menu de Navegação por Abas -->
     <nav class="nav-container">
         <button class="tab-btn active" data-tab="artigos" aria-selected="true">Artigos</button>
+        <button class="tab-btn" data-tab="curiosidades" aria-selected="false">Curiosidades</button>
         <button class="tab-btn" data-tab="quiz" aria-selected="false">Quiz</button>
         <button class="tab-btn" data-tab="jogo" aria-selected="false">Jogo da Memória</button>
     </nav>
@@ -25,6 +26,7 @@
         <!-- ABA 1: ARTIGOS -->
         <section id="artigos" class="tab-content active">
             <h2>Artigos Informativos</h2>
+            
             <div class="article-card">
                 <img src="https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Conceito de IA">
                 <div class="article-content">
@@ -32,44 +34,116 @@
                     <p>A cidadania digital exige o uso ético e crítico das novas tecnologias. Com o avanço da IA, precisamos aprender a discernir conteúdos reais de produções automatizadas para proteger nossa identidade online.</p>
                 </div>
             </div>
+
             <div class="article-card">
-                <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2VndXJhbiVDMyVBN2ElMjBkaWdpdGFsfGVufDB8fDB8fHww" alt="Segurança Digital">
+                <img src="https://unsplash.com" alt="Segurança Digital">
                 <div class="article-content">
                     <h3>O Perigo das Deepfakes</h3>
                     <p>Deepfakes adulteram vídeos e vozes de forma ultra-realista para espalhar desinformação. Para se proteger, verifique sempre a origem do material e atente-se a pequenas distorções visuais e de áudio.</p>
                 </div>
             </div>
+
+            <div class="article-card">
+                <img src="https://unsplash.com" alt="Pegada Digital e Algoritmos">
+                <div class="article-content">
+                    <h3>Sua Pegada Digital na Era dos Algoritmos</h3>
+                    <p>Cada curtida, comentário e clique alimenta os algoritmos de IA que moldam o que você vê na internet. Desenvolver uma consciência sobre seus dados ajuda a evitar bolhas de informação e manipulação comercial.</p>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <img src="https://unsplash.com" alt="Cibersegurança Prática">
+                <div class="article-content">
+                    <h3>Como Praticar a Auto-Defesa Digital</h3>
+                    <p>Proteger-se contra fraudes baseadas em IA envolve o uso de autenticação em duas etapas (2FA), desconfiar de chamadas urgentes pedindo dinheiro (mesmo com vozes conhecidas) e limitar a exposição de dados pessoais públicos.</p>
+                </div>
+            </div>
         </section>
 
-        <!-- ABA 2: QUIZ -->
+        <!-- NOVA ABA: CURIOSIDADES -->
+        <section id="curiosidades" class="tab-content">
+            <h2>Curiosidades Tecnológicas</h2>
+            <p class="section-intro">Fatos surpreendentes sobre o desenvolvimento da Inteligência Artificial e da segurança digital.</p>
+            
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <span class="fact-icon">🎬</span>
+                    <h4>Origem do Termo</h4>
+                    <p>A palavra "Deepfake" surgiu em 2017 na comunidade online Reddit. Ela combina os termos <em>"Deep Learning"</em> (Aprendizado Profundo) e <em>"Fake"</em> (Falso).</p>
+                </div>
+
+                <div class="fact-card">
+                    <span class="fact-icon">👁️</span>
+                    <h4>O Truque do Piscar</h4>
+                    <p>No início, os sistemas de IA não conseguiam criar deepfakes que piscavam os olhos corretamente, pois eram treinados com fotos estáticas onde as pessoas sempre apareciam de olhos abertos.</p>
+                </div>
+
+                <div class="fact-card">
+                    <span class="fact-icon">🤖</span>
+                    <h4>IA contra IA</h4>
+                    <p>As melhores ferramentas para detectar vídeos falsificados são construídas usando outras Inteligências Artificiais programadas exclusivamente para caçar imperfeições em nível de pixel.</p>
+                </div>
+
+                <div class="fact-card">
+                    <span class="fact-icon">📜</span>
+                    <h4>Termo Antigo</h4>
+                    <p>O conceito de "Inteligência Artificial" não é novo. Ele foi cunhado pelo cientista John McCarthy no ano de 1956, durante uma famosa conferência de verão em Dartmouth.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABA 3: QUIZ (Expandido) -->
         <section id="quiz" class="tab-content">
             <h2>Quiz Interativo</h2>
             <div class="quiz-container">
                 <form id="quiz-form">
-                    <p class="quiz-question">Qual é a melhor estratégia ao se deparar com um vídeo suspeito que pode ser uma deepfake?</p>
-                    
-                    <label class="quiz-option">
-                        <input type="radio" name="answer" value="incorrect">
-                        <span>Compartilhar imediatamente para alertar conhecidos.</span>
-                    </label>
-                    
-                    <label class="quiz-option">
-                        <input type="radio" name="answer" value="correct">
-                        <span>Interromper o compartilhamento e cruzar referências em canais oficiais.</span>
-                    </label>
-                    
-                    <label class="quiz-option">
-                        <input type="radio" name="answer" value="incorrect2">
-                        <span>Acreditar no vídeo se a imagem parecer muito perfeita.</span>
-                    </label>
+                    <!-- Pergunta 1 -->
+                    <div class="quiz-step">
+                        <p class="quiz-question">1. Qual é a melhor estratégia ao se deparar com um vídeo suspeito que pode ser uma deepfake?</p>
+                        
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="incorrect">
+                            <span>Compartilhar imediatamente para alertar conhecidos.</span>
+                        </label>
+                        
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="correct">
+                            <span>Interromper o compartilhamento e cruzar referências em canais oficiais.</span>
+                        </label>
+                        
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="incorrect2">
+                            <span>Acreditar no vídeo se a imagem parecer muito perfeita.</span>
+                        </label>
+                    </div>
 
-                    <button type="submit" class="btn">Enviar Resposta</button>
+                    <!-- Pergunta 2 -->
+                    <div class="quiz-step">
+                        <p class="quiz-question">2. O que significa "Cidadania Digital"?</p>
+                        
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="incorrect">
+                            <span>Navegar na internet o dia todo sem nenhuma restrição ou cuidado.</span>
+                        </label>
+                        
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="correct">
+                            <span>Utilizar a tecnologia de forma ética, segura, responsável e crítica.</span>
+                        </label>
+                        
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="incorrect2">
+                            <span>Comprar apenas produtos eletrônicos certificados pelo governo.</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn">Enviar Respostas</button>
                 </form>
                 <div id="quiz-result"></div>
             </div>
         </section>
 
-        <!-- ABA 3: JOGO DA MEMÓRIA -->
+        <!-- ABA 4: JOGO DA MEMÓRIA -->
         <section id="jogo" class="tab-content">
             <h2>Jogo da Memória: Conceitos de IA</h2>
             <p class="game-instruction">Encontre os pares de emojis equivalentes sobre tecnologia e segurança cibernética.</p>
