@@ -1,130 +1,86 @@
-document.addEventListener("DOMContentLoaded", () => {
-    
-    /* ==========================================
-       1. CONTROLE DAS ABAS
-       ========================================== */
-    const tabs = document.querySelectorAll(".tab-btn");
-    const contents = document.querySelectorAll(".tab-content");
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cidadania Digital: IA & Deepfakes</title>
+    <!-- VINCULAÇÃO DO ARQUIVO CSS EXTERNO -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-            tabs.forEach(t => {
-                t.classList.remove("active");
-                t.setAttribute("aria-selected", "false");
-            });
-            contents.forEach(c => c.classList.remove("active"));
+    <header>
+        <h1>Cidadania Digital: IA & Deepfakes</h1>
+        <p>Impactos, ética e proteção no ambiente virtual moderno</p>
+    </header>
 
-            tab.classList.add("active");
-            tab.setAttribute("aria-selected", "true");
-            
-            const targetContent = document.getElementById(tab.dataset.tab);
-            if (targetContent) {
-                targetContent.classList.add("active");
-            }
-        });
-    });
+    <!-- Menu de Navegação por Abas -->
+    <nav class="nav-container">
+        <button class="tab-btn active" data-tab="artigos" aria-selected="true">Artigos</button>
+        <button class="tab-btn" data-tab="quiz" aria-selected="false">Quiz</button>
+        <button class="tab-btn" data-tab="jogo" aria-selected="false">Jogo da Memória</button>
+    </nav>
 
-    /* ==========================================
-       2. VALIDADOR DO QUIZ
-       ========================================== */
-    const quizForm = document.getElementById("quiz-form");
-    const quizResult = document.getElementById("quiz-result");
+    <main>
+        <!-- ABA 1: ARTIGOS -->
+        <section id="artigos" class="tab-content active">
+            <h2>Artigos Informativos</h2>
+            <div class="article-card">
+                <img src="https://unsplash.com" alt="Conceito de IA">
+                <div class="article-content">
+                    <h3>O que é Inteligência Artificial e Cidadania Digital?</h3>
+                    <p>A cidadania digital exige o uso ético e crítico das novas tecnologias. Com o avanço da IA, precisamos aprender a discernir conteúdos reais de produções automatizadas para proteger nossa identidade online.</p>
+                </div>
+            </div>
+            <div class="article-card">
+                <img src="https://unsplash.com" alt="Segurança Digital">
+                <div class="article-content">
+                    <h3>O Perigo das Deepfakes</h3>
+                    <p>Deepfakes adulteram vídeos e vozes de forma ultra-realista para espalhar desinformação. Para se proteger, verifique sempre a origem do material e atente-se a pequenas distorções visuais e de áudio.</p>
+                </div>
+            </div>
+        </section>
 
-    if (quizForm && quizResult) {
-        quizForm.addEventListener("submit", (event) => {
-            event.preventDefault(); 
+        <!-- ABA 2: QUIZ -->
+        <section id="quiz" class="tab-content">
+            <h2>Quiz Interativo</h2>
+            <div class="quiz-container">
+                <form id="quiz-form">
+                    <p class="quiz-question">Qual é a melhor estratégia ao se deparar com um vídeo suspeito que pode ser uma deepfake?</p>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="incorrect">
+                        <span>Compartilhar imediatamente para alertar conhecidos.</span>
+                    </label>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="correct">
+                        <span>Interromper o compartilhamento e cruzar referências em canais oficiais.</span>
+                    </label>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="incorrect2">
+                        <span>Acreditar no vídeo se a imagem parecer muito perfeita.</span>
+                    </label>
 
-            const selectedOption = document.querySelector('input[name="answer"]:checked');
-            quizResult.className = ""; 
-            
-            if (!selectedOption) {
-                quizResult.textContent = "⚠️ PARÂMETRO AUSENTE: Selecione uma alternativa para análise.";
-                quizResult.classList.add("error");
-                return;
-            }
+                    <button type="submit" class="btn">Enviar Resposta</button>
+                </form>
+                <div id="quiz-result"></div>
+            </div>
+        </section>
 
-            if (selectedOption.value === "correct") {
-                quizResult.textContent = "✓ SUCESSO: Interromper o compartilhamento e cruzar referências com repositórios oficiais mitiga a proliferação da desinformação.";
-                quizResult.classList.add("success");
-            } else {
-                quizResult.textContent = "✕ ANOMALIA: As mídias sintéticas replicam padrões formais de credibilidade com exatidão. A checagem primária é mandatória.";
-                quizResult.classList.add("error");
-            }
-        });
-    }
+        <!-- ABA 3: JOGO DA MEMÓRIA -->
+        <section id="jogo" class="tab-content">
+            <h2>Jogo da Memória: Conceitos de IA</h2>
+            <p class="game-instruction">Encontre os pares de emojis equivalentes sobre tecnologia e segurança cibernética.</p>
+            <div class="game-container">
+                <div id="gameGrid" class="grid"></div>
+                <button id="reset-btn" class="btn">Reiniciar Jogo</button>
+            </div>
+        </section>
+    </main>
 
-    /* ==========================================
-       3. JOGO DA MEMÓRIA
-       ========================================== */
-    const grid = document.getElementById("gameGrid");
-    const resetBtn = document.getElementById("reset-btn");
-
-    if (grid) {
-        const emojis = ['🤖', '🤖', '🔒', '🔒', '💻', '💻', '🔍', '🔍', '🧠', '🧠', '🛡️', '🛡️', '📱', '📱', '🎭', '🎭'];
-        let shuffledEmojis = [];
-        let flippedCards = [];
-        let matchedPairs = 0;
-        let lockBoard = false;
-
-        function shuffle(array) {
-            return array.sort(() => Math.random() - 0.5);
-        }
-
-        function createBoard() {
-            grid.innerHTML = '';
-            shuffledEmojis = shuffle([...emojis]);
-            flippedCards = [];
-            matchedPairs = 0;
-            lockBoard = false;
-
-            shuffledEmojis.forEach((emoji, index) => {
-                const card = document.createElement('div');
-                card.classList.add('card');
-                card.dataset.index = index;
-                card.innerHTML = emoji;
-                card.addEventListener('click', flipCard);
-                grid.appendChild(card);
-            });
-        }
-
-        function flipCard() {
-            if (lockBoard) return;
-            if (this === flippedCards[0]) return;
-
-            this.classList.add('flipped');
-            flippedCards.push(this);
-
-            if (flippedCards.length === 2) {
-                lockBoard = true;
-                setTimeout(checkMatch, 600);
-            }
-        }
-
-        function checkMatch() {
-            const [card1, card2] = flippedCards;
-            const index1 = card1.dataset.index;
-            const index2 = card2.dataset.index;
-
-            if (shuffledEmojis[index1] === shuffledEmojis[index2]) {
-                card1.classList.add('matched');
-                card2.classList.add('matched');
-                matchedPairs++;
-                if (matchedPairs === emojis.length / 2) {
-                    setTimeout(() => { alert('Parabéns! Você encontrou todos os conceitos!'); }, 200);
-                }
-                flippedCards = [];
-                lockBoard = false;
-            } else {
-                setTimeout(() => {
-                    card1.classList.remove('flipped');
-                    card2.classList.remove('flipped');
-                    flippedCards = [];
-                    lockBoard = false;
-                }, 600);
-            }
-        }
-
-        createBoard();
-        if (resetBtn) resetBtn.addEventListener("click", createBoard);
-    }
-});
+    <!-- VINCULAÇÃO DO ARQUIVO JAVASCRIPT EXTERNO -->
+    <script src="script.js"></script>
+</body>
+</html>
